@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CallScreen extends StatelessWidget {
-  const CallScreen({super.key});
+class CallPage extends StatelessWidget {
+  const CallPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          leading: IconButton(
+              onPressed: (){},
+              icon: Icon(Icons.arrow_back_ios_new)
+          )
+      ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -26,7 +32,6 @@ class CallScreen extends StatelessWidget {
               ),
               SizedBox(height: 500,),
               Container(
-                //margin: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                 child: Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +51,7 @@ class CallScreen extends StatelessWidget {
                           color: Colors.white,
                       ),
                       ),
-                      SizedBox(height: 70,),
+                      SizedBox(height: 50,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
