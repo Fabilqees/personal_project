@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:personal_project_app/features/screen_one/pages/welcome_page.dart';
+import 'package:personal_project_app/features/screen_one/widgets/continue_link.dart';
+import 'package:personal_project_app/features/screen_one/widgets/login_button.dart';
+import 'package:personal_project_app/features/screen_one/widgets/social_links.dart';
+import 'package:personal_project_app/features/screen_one/widgets/user_email_input.dart';
+import 'package:personal_project_app/features/screen_one/widgets/user_password_input.dart';
+import 'package:personal_project_app/features/screen_one/widgets/welcome_message.dart';
+import 'package:personal_project_app/features/screen_two/widgets/user_name_input.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({super.key});
@@ -15,114 +22,15 @@ class RegistrationPage extends StatelessWidget {
           padding: EdgeInsets.all(30),
           children: [
             //Welcome back
-            Text(
-              "Register Account",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Colors.black87
-              ),
-            ),
-            SizedBox(height: 12),
-            // Find Details
-            Text("Find your details or continue \nwith social media",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.black38
-              ),
-            ),
+            WelcomeMessage(heading: "Register Account"),
             SizedBox(height: 36,),
-
-            //User Text Field
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white)
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "User Name",
-                      border: InputBorder.none,
-                      prefixIcon: const Icon(Icons.person)
-                  ),
-                ),
-              ),
-            ),
-
+            UserNameField(),
             SizedBox(height: 24,),
-
-            //Email Text Field
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white)
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Email Address",
-                      border: InputBorder.none,
-                      prefixIcon: const Icon(Icons.email_sharp)
-                  ),
-                ),
-              ),
-            ),
-
+            UserEmailField(),
             SizedBox(height: 24,),
-
-            //Password Text Field
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey[100],
-                    border: Border.all(color: Colors.white)
-                ),
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      hintText: "Password",
-                      border: InputBorder.none,
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: const Icon(Icons.remove_red_eye_outlined)
-                  ),
-                ),
-              ),
-            ),
-
-
-
+            UserPasswordField(),
             SizedBox(height: 24,),
-
-            // Sign Up Button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    color: Colors.teal.shade300,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                child: Center(
-                  child: Text(
-                    "SIGN UP",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
+         LoginButton(text: "SIGN UP"),
             SizedBox(height: 30,),
             Row(
               children: [
@@ -152,39 +60,13 @@ class RegistrationPage extends StatelessWidget {
                 )
               ],
             ),
-
             SizedBox(height: 15,),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset("assets/images/google_img.png",height: 30,),
-                  SizedBox(width: 10,),
-                  Image.asset("assets/images/facebook_img.png",height: 30,)
-                  // Image.asset("assets/images/welcome_img.png",)
-                ],
-              ),
-            ),
+            SocialLinks(),
             SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // ignore: prefer_const_constructors
-                Text("Already Have Account?",
-                  style: TextStyle(
-                      color: Colors.black54
-                  ),),
-                TextButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => WelcomeBackPage()
-                  ));
-                },
-                    child: Text("Log In",
-                      style: TextStyle(
-                          color: Colors.black
-                      ),) )
-              ],
-
+            ContinueLink(
+              textOne: "Already Have Account?",
+              textTwo: "Log in",
+              next: WelcomeBackPage(),
             )
           ],
 
@@ -194,3 +76,9 @@ class RegistrationPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
